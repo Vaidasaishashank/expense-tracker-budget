@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Smart Expense Tracker & Budget Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="logo">₹</span><span class="brand">SpendSmart</span></div>
+    <span class="tag">AI-Smart Expense Tracker & Budget Planner</span>
+  </header>
+  <main class="container">
+    <section class="welcome">
+      <div><p class="eyebrow">YOUR MONEY, MADE CLEAR</p><h1>Expense tracker</h1><p class="muted">Track spending, plan your budget, and build better habits.</p></div>
+      <label class="budget-box">Monthly budget (₹)<input id="budgetInput" type="number" min="0" value="20000"></label>
+    </section>
+    <section class="stats">
+      <article class="stat"><span>Total income</span><strong id="incomeTotal">₹0</strong><small>Income entries</small></article>
+      <article class="stat"><span>Total expenses</span><strong id="expenseTotal">₹0</strong><small>All recorded spending</small></article>
+      <article class="stat"><span>Balance</span><strong id="balanceTotal">₹0</strong><small>Income minus expenses</small></article>
+      <article class="stat"><span>Budget remaining</span><strong id="remainingTotal">₹20,000</strong><small id="budgetHint">Monthly budget</small></article>
+    </section>
+    <section class="grid">
+      <article class="panel">
+        <h2>Add a transaction</h2>
+        <form id="transactionForm">
+          <label>Description<input id="description" required maxlength="80" placeholder="e.g. Groceries"></label>
+          <div class="two">
+            <label>Amount (₹)<input id="amount" type="number" min="0.01" step="0.01" required placeholder="500"></label>
+            <label>Type<select id="type"><option value="EXPENSE">Expense</option><option value="INCOME">Income</option></select></label>
+          </div>
+          <div class="two">
+            <label>Category<select id="category"><option>Food</option><option>Transport</option><option>Shopping</option><option>Bills</option><option>Education</option><option>Health</option><option>Salary</option><option>Entertainment</option><option>Other</option></select></label>
+            <label>Date<input id="date" type="date" required></label>
+          </div>
+          <button class="primary" type="submit">+ Add transaction</button>
+          <p id="formMessage" class="message" role="status"></p>
+        </form>
+      </article>
+      <article class="panel">
+        <h2>Budget insight</h2>
+        <div class="insight-icon">✦</div>
+        <h3 id="insightTitle">You're ready to start</h3>
+        <p id="insightText" class="muted">Add your income and expenses to see a simple spending insight here.</p>
+        <div class="progress-label"><span>Budget used</span><strong id="budgetPercent">0%</strong></div>
+        <div class="progress"><div id="budgetBar"></div></div>
+        <p class="footnote">Insights are based on your recorded transactions, not professional financial advice.</p>
+      </article>
+    </section>
+    <section class="panel transactions">
+      <div class="section-head"><div><h2>Recent transactions</h2><p class="muted">Your saved activity on this browser</p></div><button id="clearButton" class="secondary" type="button">Clear all</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Description</th><th>Category</th><th>Date</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="transactionRows"></tbody></table></div>
+      <p id="emptyState" class="empty">No transactions yet. Add one above to get started.</p>
+    </section>
+  </main>
+  <footer>SpendSmart · Student project demo · Data is stored in this browser</footer>
+  <script src="app.js"></script>
+</body>
+</html>
